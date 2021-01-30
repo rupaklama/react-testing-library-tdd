@@ -38,7 +38,7 @@ test('button has correct initial color', () => {
   expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
 
   // expect the button text to be 'Change to red' after button gets clicked
-  expect(colorButton.textContent).toBe('Change to red');
+  expect(colorButton).toHaveTextContent('Change to red');
 });
 
 // Button starts out 'enabled' & checkbox start 'unchecked'

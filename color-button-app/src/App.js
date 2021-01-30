@@ -4,14 +4,14 @@ import './App.css';
 
 // function
 export function replaceCamelWithSpaces(colorName) {
-  // regular expression - if there's a capital letter one or more in the middle of the word 
+  // regular expression - if there's a capital letter one or more in the middle of the word
   // proceeded by SPACE
   return colorName.replace(/\B([A-Z])\B/g, ' $1');
 }
 
-console.log(replaceCamelWithSpaces('Red')); // Red
-console.log(replaceCamelWithSpaces('MidnightBlue')); // Midnight Blue
-console.log(replaceCamelWithSpaces('MediumVioletRed')); // Medium Violet Red
+// console.log(replaceCamelWithSpaces('Red')); // Red
+// console.log(replaceCamelWithSpaces('MidnightBlue')); // Midnight Blue
+// console.log(replaceCamelWithSpaces('MediumVioletRed')); // Medium Violet Red
 
 function App() {
   const [buttonColor, setButtonColor] = useState('red');
