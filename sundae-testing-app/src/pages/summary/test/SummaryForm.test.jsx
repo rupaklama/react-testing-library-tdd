@@ -1,5 +1,4 @@
 import {
-  queryByText,
   render,
   screen,
   waitForElementToBeRemoved,
@@ -91,5 +90,7 @@ test('popover response to hover', async () => {
   await waitForElementToBeRemoved(() =>
     // no expect statement here it acts assertion on its own
     screen.queryByText(/no ice cream will actually be delivered/i)
-  ); // NOTE: We are making our assertion asyn here to solve issue with act-warning
+  );
+  // NOTE: We are making our assertion asyn here to solve issue with act-warning
+  // where an element that was there and then disappeared.
 });
