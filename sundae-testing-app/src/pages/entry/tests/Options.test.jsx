@@ -1,0 +1,23 @@
+import { render, screen } from '@testing-library/react';
+
+// options component
+import Options from '../Options';
+
+// test if it displays an image for each of the options return from the server
+// using our Mock Server to mock the actual server
+test('displays image for each scoop option from server', async () => {
+  // render Options component with prop
+  render(<Options optionType='scoops' />);
+
+  // find the multiple images
+  // 'scoop$' to indicate the letter 'scoop' will be at the end of the string
+  const scoopImages = await screen.findAllByRole('img', { name: /scoop$/i });
+
+  // our handler is returning Array of two 'Options Objects' as data from server
+  expect(scoopImages).toHaveLength(2); // toHaveLength is jest assertion
+
+  // being more specific on the images we find with alt text
+  // confirm 'alt text' of images
+  const altText = scoopImages.map(element => element.alt);
+  expect(altText).toEqual(['Chocolate scoop', 'Vanilla scoop']);
+});

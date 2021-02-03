@@ -5,7 +5,7 @@ export const handlers = [
   // get request
   // Response resolver is a function with (request, response, context) args
   // ctx, a group of functions that help to set a status code, headers, body, etc. of the mocked response
-  rest.get('http://localhost:3030/scoop', (req, res, ctx) => {
+  rest.get('http://localhost:3030/scoops', (req, res, ctx) => {
     return res(
       // mocking response object is 'json data' that we get from server with Context object
       ctx.json([
