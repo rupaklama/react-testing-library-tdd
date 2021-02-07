@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ScoopOption from './ScoopOption';
 import { Row } from 'react-bootstrap';
+import ToppingOption from './ToppingOption';
+import AlertBanner from '../../components/AlertBanner';
 
 const Options = ({ optionType }) => {
   const [items, setItems] = useState([]);
-  // console.log(items);
+  const [error, setError] = useState(false);
 
   // optionType is 'scoops' or 'toppings'
   useEffect(() => {
@@ -15,24 +17,23 @@ const Options = ({ optionType }) => {
       .get(`http://localhost:3030/${optionType}`)
       .then(response => {
         if (isMounted) {
-          setItems(response.data)
+          setItems(response.data);
         }
       })
       .catch(err => {
         // TODO: handle error response
         if (isMounted) {
-          console.log(err.message);
+          setError(true);
         }
       });
 
-      // clean up
-      return () => isMounted = false;
-      
+    // clean up
+    return () => (isMounted = false);
   }, [optionType]);
 
   // TODO: replace `null` with ToppingOption when available
   // components to render based on prop - optionType
-  const ItemComponent = optionType === 'scoops' ? ScoopOption : null;
+  const ItemComponent = optionType === 'scoops' ? ScoopOption : ToppingOption;
 
   // render particular component with data
   const optionItems = items.map(item => (
@@ -42,6 +43,10 @@ const Options = ({ optionType }) => {
       imagePath={item.imagePath}
     />
   ));
+
+  if (error) {
+    return <AlertBanner />;
+  }
 
   return <Row>{optionItems}</Row>;
 };
