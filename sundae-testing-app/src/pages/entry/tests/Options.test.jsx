@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { OrderDetailsProvider } from '../../../contexts/OrderDetails';
 
 // options component
 import Options from '../Options';
@@ -7,7 +8,7 @@ import Options from '../Options';
 // using our Mock Server to mock the actual server
 test('displays image for each scoop option from server', async () => {
   // render Options component with prop
-  render(<Options optionType='scoops' />);
+  render(<Options optionType='scoops' />, { wrapper: OrderDetailsProvider });
 
   // find the multiple images
   // 'scoop$' to indicate the letter 'scoop' will be at the end of the string
@@ -24,7 +25,7 @@ test('displays image for each scoop option from server', async () => {
 
 test('Displays image for each toppings option from server', async () => {
   // Mock Service Worker will return three toppings from server
-  render(<Options optionType='toppings' />);
+  render(<Options optionType='toppings'/>, { wrapper: OrderDetailsProvider });
 
   // find images, expect 3 based on what msw returns
   // 'topping$' to indicate the letter 'topping' will be at the end of the string

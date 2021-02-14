@@ -4,10 +4,10 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 
-// user-event tries to simulate the real events that would happen in the browser as the user interacts with it
-// Fire events the same way the user does
+// userEvent tries to simulate the real events that would happen in the browser as the user interacts with it
+// Fire events works the same way the userEvent does
 // NOTE: Most projects have a few use cases for 'fireEvent',
-// but the majority of the time you should probably use @testing-library/user-event
+// but the majority of the time you should probably use userEvent - @testing-library/user-event
 import userEvent from '@testing-library/user-event';
 
 import SummaryForm from '../SummaryForm';

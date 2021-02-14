@@ -1,14 +1,26 @@
-import OrderEntry from './pages/entry/OrderEntry';
-import SummaryForm from './pages/summary/SummaryForm';
+import { useState } from 'react';
+import Container from 'react-bootstrap/Container';
 
-function App() {
+import OrderEntry from './pages/entry/OrderEntry';
+
+import { OrderDetailsProvider } from './contexts/OrderDetails';
+
+export default function App() {
+  // orderPhase needs to be 'inProgress', 'review' or 'completed'
+  const [orderPhase, setOrderPhase] = useState('inProgress');
+
+  let Component = OrderEntry; // default to order page
+  switch (orderPhase) {
+    case 'inProgress':
+      Component = OrderEntry;
+      break;
+
+    default:
+  }
+
   return (
-    <div>
-      <h3>Got Sundae!</h3>
-      <OrderEntry />
-      <SummaryForm />
-    </div>
+    <OrderDetailsProvider>
+      <Container>{<Component setOrderPhase={setOrderPhase} />}</Container>
+    </OrderDetailsProvider>
   );
 }
-
-export default App;

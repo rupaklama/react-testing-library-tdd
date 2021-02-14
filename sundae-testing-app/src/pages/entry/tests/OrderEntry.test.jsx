@@ -6,6 +6,7 @@ import { rest } from 'msw';
 
 // need to import our mock server
 import { server } from '../../../mocks/server';
+import { OrderDetailsProvider } from '../../../contexts/OrderDetails';
 
 test('handles error for scoops and topping routes', async () => {
   // override handlers to get Error Response from mock server
@@ -26,10 +27,11 @@ test('handles error for scoops and topping routes', async () => {
   );
 
   // rendering our component
-  render(<OrderEntry />);
+  render(<OrderEntry />, { wrapper: OrderDetailsProvider });
 
   // When in need to wait for any period of time you can use 'waitFor'
   // Here, we want to wait until we have TWO alerts
+  // waitFor - for multiple async requests responses
   await waitFor(async () => {
     const alerts = await screen.findAllByRole('alert');
     expect(alerts).toHaveLength(2);
