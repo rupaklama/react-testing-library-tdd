@@ -77,10 +77,17 @@ test('updates toppings subtotal when toppings change', async () => {
   userEvent.click(selectCherries);
   expect(toppingsTotal).toHaveTextContent('1.50');
 
+  // NOTE: Here, all of the data for the page relies on a single axios call.
+  // If "cherries" are available, then the axios call has returned --
+  // and that means that all the other data for the page is available too (including "hot fudge").
+  // As you'll see in the GRAND totals section, we do need multiple awaits when we are waiting on
+  // multiple server calls (one for scoops and one for toppings)
+
   // 2. select to add hot fudge topping and check the subtotal
   const selectHotfudge = await screen.findByRole('checkbox', {
     name: /hot fudge/i,
   });
+
   userEvent.click(selectHotfudge);
   expect(toppingsTotal).toHaveTextContent('3.00');
 
