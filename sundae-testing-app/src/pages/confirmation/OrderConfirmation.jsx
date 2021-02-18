@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useOrderDetails } from '../../contexts/OrderDetails';
-import AlertBanner from '../common/AlertBanner';
+import AlertBanner from '../../components/AlertBanner';
 
 export default function OrderConfirmation({ setOrderPhase }) {
   const [, , resetOrder] = useOrderDetails();
@@ -10,14 +10,26 @@ export default function OrderConfirmation({ setOrderPhase }) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     axios
       // in a real app we would get order details from context
       // and send with POST
       .post(`http://localhost:3030/order`)
       .then(response => {
-        setOrderNumber(response.data.orderNumber);
+        if (isMounted) {
+          setOrderNumber(response.data.orderNumber);
+        }
       })
-      .catch(error => setError(true));
+      .catch(err => {
+        // TODO: handle error response
+        if (isMounted) {
+          setError(true);
+        }
+      });
+
+    // clean up
+    return () => (isMounted = false);
   }, []);
 
   if (error) {

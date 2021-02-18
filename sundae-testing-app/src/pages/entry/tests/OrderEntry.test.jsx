@@ -27,7 +27,9 @@ test('handles error for scoops and topping routes', async () => {
   );
 
   // rendering our component
-  render(<OrderEntry />, { wrapper: OrderDetailsProvider });
+  render(<OrderEntry setOrderPhase={jest.fn()} />, {
+    wrapper: OrderDetailsProvider,
+  });
 
   // When in need to wait for any period of time you can use 'waitFor'
   // Here, we want to wait until we have TWO alerts
