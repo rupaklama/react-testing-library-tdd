@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 
+// Response Resolver function is to specify a Mocked Response
 // NOTE: This Handlers functions determine what will return for any particular url/route
 export const handlers = [
   // get request
