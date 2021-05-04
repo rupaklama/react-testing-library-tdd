@@ -4,6 +4,7 @@
 
 // server.js file we are going to create a server instance with our request handlers
 // Import setupServer function from the msw package and create a server instance with previously defined request handlers
+// NOTE - Server to send back our Custom Response on Request Handlers
 import { setupServer } from 'msw/node';
 import { handlers } from './handlers';
 
