@@ -1,7 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import OrderEntry from '../OrderEntry';
 
-// to override handlers to get Error Response from mock server,
+// NOTE - By default, Request Handlers return non-error response meaning No Error Response Objects
+// that's what we want in most of our tests.
+// For these particular test, we actually want Error Response since we are testing Error Response to show up. 
+// We will override handlers to get Error Response from mock server
 import { rest } from 'msw';
 
 // need to import our mock server
