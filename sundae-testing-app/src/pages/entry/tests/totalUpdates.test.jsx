@@ -24,6 +24,7 @@ test('updates scoop subtotal when scoops change', async () => {
   // it doesn't have any particular role on the page
   const scoopsSubtotal = screen.getByText('Scoops total: $', { exact: false }); // default by true
   // Doing { exact: false }, now this will find an element even if it is not an ENTIRE STRING
+  // Using { exact: false }, since we are not using regular expressions
   // NOTE: { exact: false } DOEST NOT work or is NOT an option for *byRole
 
   // passing partial text content - '0.00'
