@@ -93,4 +93,7 @@ test('popover response to hover', async () => {
   );
   // NOTE: We are making our assertion asyn here to solve issue with act-warning
   // where an element that was there and then disappeared.
+  
+  // ALL WE NEEDED TO DO IS MAKE OUR ASSERTION ASYNC FOR ASYNC OPERATION.
+  // OUR TEST FUNCTION WAS NOT ASYNC THAT IS WHY IT EXITED EARLY
 });
