@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 // To handle a REST API request we need to specify its method, path, and
-// a function that would return the mocked response
+// a function that would return the mocked response - Request Handler
 
 // Request handlers by calling rest[METHOD] and providing a request path
 
