@@ -4,7 +4,7 @@ import { rest } from 'msw';
 
 // Request handlers by calling rest[METHOD] and providing a request path
 
-// NOTE: This Handlers functions determine what will return for any particular url/route
+// NOTE: This Handlers functions determine what will return for any particular url/route - RESPONSE OBJECT
 export const handlers = [
   // Response Resolver function is to specify a Mocked Response
   // Response resolver is a function with (request, response, context) args
