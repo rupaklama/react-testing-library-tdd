@@ -23,7 +23,7 @@ test('updates scoop subtotal when scoops change', async () => {
   // since scoop is a display element, we are going to just find it by 'text' & options object
   // it doesn't have any particular role on the page
   const scoopsSubtotal = screen.getByText('Scoops total: $', { exact: false }); // default by true
-  // Doing { exact: false }, now this will find an element even if it is not an ENTIRE STRING
+  // Doing { exact: false } since it is a partial match, now this will find an element even if it is not an ENTIRE STRING
   // Using { exact: false }, since we are not using regular expressions
   // NOTE: { exact: false } DOEST NOT work or is NOT an option for *byRole
 
